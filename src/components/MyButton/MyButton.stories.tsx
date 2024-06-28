@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import MyButton from './MyButton';
 import { MyButtonProps } from './MyButton.types';
 
@@ -24,6 +25,11 @@ PrimaryButton.args = {
   hoverColor: "#0056b3",
   activeColor: "#004494",
 };
+PrimaryButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = canvas.getByRole('button');
+  await userEvent.click(button);
+};
 
 export const HoverButton = Template.bind({});
 HoverButton.args = {
@@ -33,6 +39,11 @@ HoverButton.args = {
   hoverColor: "#0056b3",
   activeColor: "#004494",
 };
+HoverButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = canvas.getByRole('button');
+  await userEvent.hover(button);
+};
 
 export const DisabledButton = Template.bind({});
 DisabledButton.args = {
@@ -40,4 +51,9 @@ DisabledButton.args = {
   disabled: true,
   backgroundColor: "#007BFF",
   color: "#fff",
+};
+DisabledButton.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = canvas.getByRole('button');
+  await userEvent.click(button);
 };
