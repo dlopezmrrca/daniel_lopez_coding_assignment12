@@ -34,10 +34,6 @@ const StyledButton = styled.button<MyButtonProps>`
     transform: none;
   }
 `;
-export function sum(a: number, b: number) {
-  return a + b;
- }
-
 
 const MyButton = ({
   disabled = false,
