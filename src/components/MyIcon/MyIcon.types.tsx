@@ -3,6 +3,5 @@ export interface MyIconProps {
     hoverColor?: string;
     size?: string;
     disabled?: boolean;
-    [x: string]: any;
   }
   

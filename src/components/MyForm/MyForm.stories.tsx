@@ -22,8 +22,8 @@ PrimaryForm.args = {
 
 PrimaryForm.play = async ({ canvasElement }) => { 
   const canvas = within(canvasElement);
-  await userEvent.type(canvas.getByTestId('name'), 'John');
-  await userEvent.type(canvas.getByTestId('email'), 'g5qg8@example.com');
+  await userEvent.type(canvas.getByTestId('name'), 'Daniel');
+  await userEvent.type(canvas.getByTestId('email'), 'daniel@me.com');
   await userEvent.type(canvas.getByTestId('comment'), 'This is a comment');
   await userEvent.click(canvas.getByTestId('submit'));
 };
