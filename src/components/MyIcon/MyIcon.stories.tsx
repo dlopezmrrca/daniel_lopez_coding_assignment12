@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import MyIcon from './MyIcon';
 import { MyIconProps } from './MyIcon.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: "Daniel-Library/MyIcon",
@@ -21,6 +22,11 @@ PrimaryIcon.args = {
   hoverColor: '#007BFF',
   size: '2em',
 };
+PrimaryIcon.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const icon = await canvas.getByTestId('icon');
+  await userEvent.hover(icon);
+};
 
 export const SecondaryIcon = Template.bind({});
 SecondaryIcon.args = {
@@ -28,10 +34,20 @@ SecondaryIcon.args = {
   hoverColor: '#5a6268',
   size: '2em',
 };
+SecondaryIcon.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const icon = await canvas.getByTestId('icon');
+  await userEvent.hover(icon);
+};
 
 export const DisabledIcon = Template.bind({});
 DisabledIcon.args = {
   color: '#6c757d',
   disabled: true,
   size: '2em',
+};
+DisabledIcon.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const icon = await canvas.getByTestId('icon');
+  await userEvent.hover(icon);
 };

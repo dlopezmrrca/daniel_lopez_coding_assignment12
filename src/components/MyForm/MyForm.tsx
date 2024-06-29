@@ -49,12 +49,17 @@ const StyledButton = styled.button<MyFormProps>`
 `;
 
 const MyForm = ({ disabled = false, focused = false, ...props }: MyFormProps) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log('Form submitted!');
+  };
+
   return (
-    <StyledForm {...props}>
-      <StyledInput type="text" placeholder="Name" disabled={disabled} focused={focused} />
-      <StyledInput type="email" placeholder="Email" disabled={disabled} focused={focused} />
-      <StyledTextArea placeholder="Comment" disabled={disabled} focused={focused} />
-      <StyledButton type="submit" disabled={disabled}>
+    <StyledForm onSubmit={handleSubmit} {...props}>
+      <StyledInput data-testid="name" type="text" placeholder="Name" disabled={disabled} focused={focused} />
+      <StyledInput data-testid="email" type="email" placeholder="Email" disabled={disabled} focused={focused} />
+      <StyledTextArea data-testid="comment" placeholder="Comment" disabled={disabled} focused={focused} />
+      <StyledButton data-testid="submit" type="submit" disabled={disabled}>
         Submit
       </StyledButton>
     </StyledForm>

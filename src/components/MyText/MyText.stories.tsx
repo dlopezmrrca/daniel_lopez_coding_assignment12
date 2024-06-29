@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import MyText from './MyText';
 import { MyTextProps } from './MyText.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: "Daniel-Library/MyText",
@@ -28,10 +29,22 @@ SmallText.args = {
   children: 'Small Text',
 };
 
+SmallText.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = await canvas.getByTestId('MyText');
+  await userEvent.hover(text);
+};
+
 export const MediumText = Template.bind({});
 MediumText.args = {
   size: 'medium',
   children: 'Medium Text',
+};
+
+MediumText.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = await canvas.getByTestId('MyText');
+  await userEvent.hover(text);
 };
 
 export const LargeText = Template.bind({});
@@ -40,11 +53,18 @@ LargeText.args = {
   children: 'Large Text',
 };
 
+LargeText.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const text = await canvas.getByTestId('MyText');
+  await userEvent.hover(text);
+};
+
 export const BoldText = Template.bind({});
 BoldText.args = {
   bold: true,
   children: 'Bold Text',
 };
+
 
 export const UnderlinedText = Template.bind({});
 UnderlinedText.args = {

@@ -57,6 +57,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ isActive = false, disabled 
       isActive={isActive}
       disabled={disabled}
       onClick={toggleMenu}
+      data-testid="ToggleButton"
     >
       <FontAwesomeIcon icon={faBars} />
       {menuVisible && (

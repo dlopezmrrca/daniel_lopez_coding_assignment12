@@ -22,6 +22,8 @@ const StyledText = styled.span<MyTextProps>`
   display: ${({ visible }) => (visible ? "inline" : "none")};
 `;
 
+
+
 const MyText = ({
   size = "medium",
   bold = false,
@@ -40,6 +42,7 @@ const MyText = ({
       disabled={disabled}
       backgroundColor={backgroundColor}
       visible={visible}
+      data-testid="MyText"
       {...props}
     >
       {children}

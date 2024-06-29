@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import MyForm from './MyForm';
 import { MyFormProps } from './MyForm.types';
+import { within, userEvent } from '@storybook/testing-library';
 
 export default {
   title: 'Daniel-Library/MyForm',
@@ -17,6 +18,14 @@ export const PrimaryForm = Template.bind({});
 PrimaryForm.args = {
   disabled: false,
   focused: false,
+};
+
+PrimaryForm.play = async ({ canvasElement }) => { 
+  const canvas = within(canvasElement);
+  await userEvent.type(canvas.getByTestId('name'), 'John');
+  await userEvent.type(canvas.getByTestId('email'), 'g5qg8@example.com');
+  await userEvent.type(canvas.getByTestId('comment'), 'This is a comment');
+  await userEvent.click(canvas.getByTestId('submit'));
 };
 
 export const FocusedForm = Template.bind({});

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { MyIconProps } from "./MyIcon.types";
+import { MyIconProps } from './MyIcon.types';
 
 const StyledIcon = styled(FontAwesomeIcon)<MyIconProps>`
   color: ${({ color, disabled }) => (disabled ? "#6c757d" : color || "#000")};
@@ -27,6 +27,7 @@ const MyIcon = ({
       hoverColor={hoverColor}
       size={size}
       disabled={disabled}
+      data-testid="icon"
       {...props}
     />
   );
